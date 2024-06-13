@@ -1,0 +1,46 @@
+@import "../libs/sass/library";
+
+.buttonContainer {
+  width: 100%;
+
+  cursor: pointer;
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  transition: 0.2s;
+  color: $white;
+
+  cursor: pointer;
+
+  .buttonPost {
+    @include post-color;
+    width: 100%;
+  }
+}
+
+.iconContainer {
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  transition: 0.2s;
+  color: $white;
+
+  cursor: pointer;
+
+  .buttonPost {
+    @include post-color;
+    width: 100%;
+  }
+
+  .icon {
+    cursor: pointer;
+
+    background-color: $white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.3rem;
+    border-radius: 1rem;
+    scale: 1.5;
+  }
+}

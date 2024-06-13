@@ -1,0 +1,49 @@
+@import "./poppins.scss";
+
+$white: #fff !default;
+$black: #000 !default;
+$contour: #3e426c !default;
+$vibrant-green: #00ec89 !default;
+
+$primary-color: #424677;
+$secondary-color: #212333;
+$tertiary-color: #96a0ff;
+$quaternary-color: #6972c2;
+$accent-color: #ff70b4;
+
+$card-primary-color: #e9a7e2;
+$card-secondary-color: #00d4ff;
+
+$card-linear-gradient: linear-gradient(
+  48deg,
+  $card-primary-color 0%,
+  $card-secondary-color 100%
+);
+
+$background-linear-gradient: linear-gradient(
+  0deg,
+  $secondary-color 100%,
+  $primary-color 50%
+);
+
+$input-background: $accent-color;
+$circle-radius: 99999rem;
+
+@mixin post-color {
+  background-color: $vibrant-green;
+  cursor: pointer;
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  transition: 0.2s;
+  color: $white;
+
+  &:hover {
+    background-color: #31d38f;
+  }
+  &:active {
+    background-color: #5edaa6;
+  }
+
+  @include poppins-bold;
+}

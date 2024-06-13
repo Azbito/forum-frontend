@@ -1,0 +1,23 @@
+.container {
+  display: flex;
+}
+
+.leftColumn {
+  display: flex;
+  flex-direction: column;
+}
+
+.inputSearchContainer {
+  flex: 1;
+}
+
+.cardLoginContainer {
+  flex: 1;
+}
+
+.rightColumn {
+  flex: 3;
+  display: flex;
+  margin-top: 10.97rem;
+  flex-direction: column;
+}

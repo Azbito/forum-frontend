@@ -1,0 +1,23 @@
+@import "../libs/sass/library";
+@import "../libs/sass/poppins.scss";
+
+.inputContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  input {
+    background-color: $white;
+    color: $black;
+    border: none;
+    outline: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    @include poppins-regular;
+  }
+
+  label {
+    color: $white;
+    @include poppins-semibold;
+  }
+}

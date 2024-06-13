@@ -1,0 +1,38 @@
+@import "../libs/sass/library";
+@import "../libs/sass/poppins.scss";
+
+.textAreaContainer {
+  background-color: $vibrant-green;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 1rem;
+  width: 50%;
+
+  .textAreaWrapper {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 0;
+
+    textarea {
+      width: 100%;
+      height: 20rem;
+      padding: 1rem;
+      border-radius: 1rem;
+      resize: none;
+      outline: none;
+      @include poppins-regular;
+    }
+
+    .buttonContainer {
+      button {
+        color: $vibrant-green;
+      }
+      margin-top: 1rem;
+      margin-left: auto;
+    }
+  }
+}
