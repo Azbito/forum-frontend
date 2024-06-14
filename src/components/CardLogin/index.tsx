@@ -1,13 +1,41 @@
 import styles from "@/styles/CardLogin.module.scss";
 import { Input } from "../Input";
-import { Button } from "../Button"; // Importing Color enum from Button component
+import { Button } from "../Button";
+import { ChangeEvent } from "react";
 
-export function CardLogin() {
+interface CardLoginProps {
+  username?: string;
+  password?: string;
+  onInputChange: (
+    event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => void;
+  onLogin: () => void;
+}
+
+export function CardLogin({
+  username,
+  password,
+  onInputChange,
+  onLogin,
+}: CardLoginProps) {
   return (
     <div className={styles.container}>
-      <Input label="Username or email" />
-      <Input label="Password" />
-      <Button color="buttonPost">Login</Button>
+      <Input
+        label="Username or email"
+        name="username"
+        value={username}
+        onChange={onInputChange}
+      />
+      <Input
+        label="Password"
+        name="password"
+        type="password"
+        value={password}
+        onChange={onInputChange}
+      />
+      <Button color="buttonPost" onClick={onLogin}>
+        Login
+      </Button>
       <div className={styles.socialMedias}>
         <Button icon="google" onClick={() => alert("Work in progress")} />
         <Button icon="discord" onClick={() => alert("Work in progress")} />

@@ -1,0 +1,44 @@
+@import "../libs/sass/library";
+
+.postageContainer {
+  background-color: $quaternary-color;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+  border-radius: 1rem;
+
+  .postageHeader {
+    background-color: $tertiary-color;
+    width: 50%;
+    border-radius: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 3rem;
+    position: absolute;
+    top: -1rem;
+
+    b {
+      margin-left: 4rem;
+    }
+  }
+
+  img {
+    position: absolute;
+    width: 5rem;
+    height: 5rem;
+    object-fit: cover;
+
+    top: -2rem;
+    left: -2rem;
+
+    z-index: 1;
+    border-radius: $circle-radius;
+  }
+
+  p {
+    margin: 4rem 2rem;
+  }
+}
