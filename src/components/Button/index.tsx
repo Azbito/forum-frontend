@@ -5,7 +5,7 @@ import { ChildrenError } from "@/errors/children";
 import { FiFeather } from "react-icons/fi";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  color?: "buttonPost" | "buttonDelete" | "buttonUpdate";
+  color?: "buttonPost" | "buttonDelete" | "buttonUpdate" | "standby";
   icon?: Platform;
 }
 
@@ -15,7 +15,7 @@ const iconIcons: { [key in Platform]: JSX.Element } = {
   discord: <FaDiscord className={styles.icon} />,
   google: <FaGoogle className={styles.icon} />,
   opera: <FaOpera className={styles.icon} />,
-  feather: <FiFeather className={styles.icon} />,
+  feather: <FiFeather />,
 };
 
 export function Button({

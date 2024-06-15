@@ -29,11 +29,30 @@
     }
 
     .buttonContainer {
-      button {
-        color: $vibrant-green;
-      }
       margin-top: 1rem;
       margin-left: auto;
     }
   }
+}
+
+.standby {
+  color: $white;
+  background-color: $gray;
+  font-size: 1.5rem;
+  padding: 1rem;
+  height: 3.5rem;
+  border-radius: 9999999rem;
+  cursor: not-allowed;
+  scale: 0.85;
+}
+
+.active {
+  color: $vibrant-green;
+  background-color: $white;
+  font-size: 1.5rem;
+  padding: 1rem;
+  height: 3.5rem;
+  border-radius: 9999999rem;
+  cursor: pointer;
+  scale: 0.85;
 }

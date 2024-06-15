@@ -4,6 +4,8 @@ $white: #fff !default;
 $black: #000 !default;
 $contour: #3e426c !default;
 $vibrant-green: #00ec89 !default;
+$gray: #312d35 !default;
+$darker-gray: #19161b !default;
 
 $primary-color: #424677;
 $secondary-color: #212333;
@@ -44,6 +46,14 @@ $circle-radius: 99999rem;
   &:active {
     background-color: #5edaa6;
   }
+
+  @include poppins-bold;
+}
+
+@mixin standby-color {
+  transition: 0.2s;
+  color: $gray;
+  background-color: #ff70b4;
 
   @include poppins-bold;
 }

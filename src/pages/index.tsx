@@ -1,6 +1,6 @@
+import { ChangeEvent, useEffect, useState } from "react";
 import styles from "@/styles/Home.module.scss";
 import { InputSearch } from "@/components/InputSearch";
-import { ChangeEvent, useEffect, useState } from "react";
 import { CardLogin } from "@/components/CardLogin";
 import { PublishArea } from "@/components/PublishArea";
 import { Postage } from "@/components/Postage";
@@ -13,6 +13,8 @@ export default function Home() {
   const [search, setSearch] = useState("");
   const [postDetails, setPostDetails] = useState("");
   const [posts, setPosts] = useState<any[]>([]);
+  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+
   const { credentials, handleInputChange, handleLogin } = useCredentials();
 
   const handleSearchChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -23,18 +25,35 @@ export default function Home() {
     setPostDetails(event.target.value);
   };
 
-  useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        const postsData = await getAllPosts();
-        setPosts(postsData.data.posts);
-      } catch (error) {
-        console.error("Error fetching posts:", error);
-      }
-    };
+  const fetchPosts = async () => {
+    try {
+      const postsData = await getAllPosts();
+      setPosts(postsData.data.posts);
+    } catch (error) {
+      console.error("Error fetching posts:", error);
+    }
+  };
 
+  useEffect(() => {
     fetchPosts();
   }, []);
+
+  const handlePostSubmit = async () => {
+    if (postDetails) {
+      try {
+        setIsButtonDisabled(true);
+        await makePost(postDetails);
+        setPostDetails("");
+        fetchPosts();
+
+        setTimeout(() => {
+          setIsButtonDisabled(false);
+        }, 15 * 1000); // 15 seconds in milliseconds
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  };
 
   return (
     <div className={styles.container}>
@@ -52,31 +71,27 @@ export default function Home() {
             username={credentials.username}
             password={credentials.password}
             onInputChange={handleInputChange}
-            onLogin={() => {
-              handleLogin(authenticateUser);
-            }}
+            onLogin={() => handleLogin(authenticateUser)}
           />
         </div>
       </div>
       <div className={styles.rightColumn}>
         <PublishArea
-          onClick={() => {
-            makePost(postDetails);
-          }}
-          onChange={handlePostChange}
+          onClick={handlePostSubmit}
+          onChangeTextArea={handlePostChange}
           value={postDetails}
+          disabled={isButtonDisabled}
         />
-        {Array.isArray(posts) &&
-          posts.map((item: any) => (
-            <Postage
-              key={item.id}
-              src={item?.user.profile_picture}
-              alt="user profile picture"
-              name={item?.user.name}
-              username={item?.user.username}
-              description={item.description}
-            />
-          ))}
+        {posts.map((item) => (
+          <Postage
+            key={item.id}
+            src={item?.user.profile_picture}
+            alt="user profile picture"
+            name={item?.user.name}
+            username={item?.user.username}
+            description={item.description}
+          />
+        ))}
       </div>
     </div>
   );
