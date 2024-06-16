@@ -1,10 +1,8 @@
-import axios from "axios";
+import { api } from "@/libs/axios";
 
 export async function getAllPosts() {
   try {
-    const response = await axios.get("http://localhost:3333/users/get-posts");
-    return response;
-  } catch (error) {
-    throw error;
-  }
+    const { data } = await api.get("/users/get-posts");
+    return data;
+  } catch (error) {}
 }

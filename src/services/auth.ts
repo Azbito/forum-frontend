@@ -1,4 +1,5 @@
-import axios from "axios";
+import { api } from "@/libs/axios";
+import { setCookie } from "cookies-next";
 
 export interface AuthenticateProps {
   username?: string;
@@ -10,16 +11,17 @@ export const authenticateUser = async ({
   password,
 }: AuthenticateProps) => {
   try {
-    const response = await axios.post("http://localhost:3333/login", {
+    const { data } = await api.post("/login", {
       username,
       password,
     });
-    const token = await response.data.accessToken;
 
-    localStorage.setItem("token", token);
+    const token = data.accessToken;
 
-    return response.data;
-  } catch (error) {
-    throw error;
-  }
+    if (token) {
+      setCookie("ticket", token);
+    }
+
+    return data;
+  } catch (error) {}
 };

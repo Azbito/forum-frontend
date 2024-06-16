@@ -16,7 +16,7 @@ export function PublishArea({
   return (
     <div className={styles.textAreaContainer}>
       <div className={styles.textAreaWrapper}>
-        <textarea onChange={onChangeTextArea} value={value} />
+        <textarea onChange={onChangeTextArea} value={value} maxLength={250} />
         <div className={styles.buttonContainer}>
           <Button
             onClick={onClick}

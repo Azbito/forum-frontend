@@ -16,6 +16,26 @@
     @include post-color;
     width: 100%;
   }
+
+  .default {
+    background-color: $white;
+    cursor: pointer;
+    text-transform: uppercase;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    transition: 0.2s;
+    color: $black;
+    width: 100%;
+
+    &:hover {
+      background-color: #cccccc;
+    }
+    &:active {
+      background-color: #acacac;
+    }
+
+    @include poppins-bold;
+  }
 }
 
 .iconContainer {

@@ -5,7 +5,12 @@ import { ChildrenError } from "@/errors/children";
 import { FiFeather } from "react-icons/fi";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  color?: "buttonPost" | "buttonDelete" | "buttonUpdate" | "standby";
+  color?:
+    | "buttonPost"
+    | "buttonDelete"
+    | "buttonUpdate"
+    | "standby"
+    | "default";
   icon?: Platform;
 }
 

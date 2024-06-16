@@ -7,17 +7,15 @@
   flex-direction: column;
 }
 
-.inputSearchContainer {
-  flex: 1;
-}
-
 .cardLoginContainer {
   flex: 1;
 }
 
 .rightColumn {
-  gap: 5rem;
-  flex: 3;
   display: flex;
   flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  gap: 5rem;
 }

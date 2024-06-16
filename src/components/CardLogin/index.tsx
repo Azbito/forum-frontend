@@ -1,37 +1,32 @@
+import React from "react";
 import styles from "@/styles/CardLogin.module.scss";
 import { Input } from "../Input";
 import { Button } from "../Button";
 import { ChangeEvent } from "react";
 
 interface CardLoginProps {
-  username?: string;
-  password?: string;
-  onInputChange: (
-    event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => void;
+  onUsernameChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  onPasswordChange: (e: ChangeEvent<HTMLInputElement>) => void;
   onLogin: () => void;
 }
 
-export function CardLogin({
-  username,
-  password,
-  onInputChange,
+export const CardLogin: React.FC<CardLoginProps> = ({
+  onUsernameChange,
+  onPasswordChange,
   onLogin,
-}: CardLoginProps) {
+}) => {
   return (
     <div className={styles.container}>
       <Input
         label="Username or email"
         name="username"
-        value={username}
-        onChange={onInputChange}
+        onChange={onUsernameChange}
       />
       <Input
         label="Password"
         name="password"
         type="password"
-        value={password}
-        onChange={onInputChange}
+        onChange={onPasswordChange}
       />
       <Button color="buttonPost" onClick={onLogin}>
         Login
@@ -46,4 +41,4 @@ export function CardLogin({
       </b>
     </div>
   );
-}
+};

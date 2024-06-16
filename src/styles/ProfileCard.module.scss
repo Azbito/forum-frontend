@@ -1,0 +1,48 @@
+@import "../libs/sass/library";
+@import "../libs/sass/poppins.scss";
+
+.profileCardContainer {
+  background: $card-linear-gradient;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-left: 1rem;
+  border-radius: 1rem;
+  width: 15rem;
+  padding: 4rem 0;
+
+  top: 10rem;
+  position: fixed;
+
+  .profileContent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    .name {
+      font-size: 2rem;
+    }
+
+    p {
+      @include poppins-regular-italic;
+
+      .amount {
+        font-size: 1rem;
+      }
+    }
+
+    .image {
+      border-radius: $circle-radius;
+    }
+
+    .postsContainer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      gap: 1rem;
+    }
+  }
+}

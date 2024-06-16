@@ -1,10 +1,10 @@
-import axios from "axios";
+import { api } from "@/libs/axios";
 
 export const makePost = async (description: string) => {
   try {
     const token = localStorage.getItem("token");
-    const response = await axios.post(
-      "http://localhost:3333/post",
+    const response = await api.post(
+      "/post",
       { description },
       {
         headers: {
@@ -14,7 +14,5 @@ export const makePost = async (description: string) => {
     );
 
     return response;
-  } catch (error) {
-    throw error;
-  }
+  } catch (error) {}
 };
