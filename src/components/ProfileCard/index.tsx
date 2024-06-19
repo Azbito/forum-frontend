@@ -7,7 +7,6 @@ interface ProfileProps {
   profile_picture?: string;
   name: string;
   username: string;
-  post_amount: string;
   url: string;
 }
 
@@ -15,7 +14,6 @@ export function ProfileCard({
   profile_picture,
   name,
   username,
-  post_amount,
   url,
 }: ProfileProps) {
   return (
@@ -30,10 +28,6 @@ export function ProfileCard({
         />
         <b className={styles.name}>{name}</b>
         <p>{username}</p>
-        <div className={styles.postsContainer}>
-          <Feather size={16} /> <p>Posts: </p>{" "}
-          <b className={styles.amount}>{post_amount}</b>
-        </div>
         <Button
           color="default"
           onClick={() => {

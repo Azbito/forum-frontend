@@ -10,6 +10,8 @@ import { getCurrentUser } from "@/services/get-current-user";
 import { parseCookies } from "nookies";
 import { getAllPosts } from "@/services/get-all-posts";
 import { Postage } from "@/components/Postage";
+import { getMyPosts } from "@/services/get-user-posts";
+import { decodeJwtToken } from "@/@utils/decodeJwt";
 
 export default function Home({ data }: any) {
   const { login } = useAuth();
@@ -45,7 +47,6 @@ export default function Home({ data }: any) {
     }
   };
 
-  console.log(data.postsData);
   return (
     <div className={styles.container}>
       <div className={styles.leftColumn}>
@@ -79,7 +80,6 @@ export default function Home({ data }: any) {
           ) : (
             <ProfileCard
               name={data.currentUser.name}
-              post_amount=""
               url={data.currentUser.profile_picture}
               username={data.currentUser.username}
             />
@@ -111,10 +111,14 @@ export default function Home({ data }: any) {
 export async function getServerSideProps(context: any) {
   const cookies = parseCookies(context);
   let currentUser = null;
+  let myPosts = [];
   let postsData = [];
 
-  if (cookies.ticket) {
+  const userId = decodeJwtToken(cookies.ticket);
+
+  if (cookies.ticket && userId) {
     currentUser = await getCurrentUser(cookies.ticket);
+    myPosts = await getMyPosts(cookies.ticket, userId);
   }
 
   try {
@@ -124,5 +128,5 @@ export async function getServerSideProps(context: any) {
     console.error("Error fetching posts: ", error);
   }
 
-  return { props: { data: { currentUser, postsData } } };
+  return { props: { data: { currentUser, postsData, myPosts } } };
 }
